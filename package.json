@@ -1,0 +1,68 @@
+{
+  "directories": {
+    "test": "test"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "name": "react-pdf-js-non-ascii",
+  "version": "1.0.0",
+  "description": "react-pdf-js non-ascii content issue.",
+  "main": "lib/react-pdf-js-non-ascii.js",
+  "scripts": {
+    "test": "mocha test/",
+    "prepublish": "npm run --if-present build",
+    "start": "npm-run-all clean --parallel watch:css server",
+    "server": "cross-env NODE_ENV=development webpack-dev-server --hot --content-base ./public --open",
+    "build:js": "cross-env NODE_ENV=production webpack --progress -p",
+    "build:css": "postcss --config postcss.config.js src/index.css -o public/build/build.css",
+    "build": "npm-run-all clean --parallel build:*",
+    "watch:js": "cross-env NODE_ENV=development webpack --watch",
+    "watch:css": "chokidar --initial 'src/**/*.css' -c 'npm run build:css'",
+    "watch": "npm-run-all clean --parallel watch:*",
+    "clean": "rimraf public/build && mkdirp public/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/react-pdf-js-non-ascii.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azu/react-pdf-js-non-ascii/issues"
+  },
+  "homepage": "https://github.com/azu/react-pdf-js-non-ascii",
+  "devDependencies": {
+    "autoprefixer": "^7.0.1",
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-jsdoc-to-assert": "^4.0.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chokidar-cli": "^1.2.0",
+    "cross-env": "^4.0.0",
+    "json-loader": "^0.5.4",
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.3.0",
+    "npm-run-all": "^4.0.2",
+    "postcss-calc": "^5.3.1",
+    "postcss-cli": "^3.2.0",
+    "postcss-custom-media": "^5.0.1",
+    "postcss-custom-properties": "^5.0.2",
+    "postcss-easy-import": "^2.0.0",
+    "postcss-reporter": "^3.0.0",
+    "power-assert": "^1.4.2",
+    "rimraf": "^2.6.1",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-pdf-js": "^1.0.35"
+  }
+}
